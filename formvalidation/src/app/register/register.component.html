@@ -1,0 +1,115 @@
+<div class="container p-5">
+  <h1>Register (Reactive form)</h1>
+  <hr />
+
+  <div class="row g-3 align-items-center p-5">
+    <form [formGroup]="myform" (ngSubmit)="handleval()">
+      <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label">Name</label>
+      </div>
+      <div class="col-auto">
+        <input
+          type="text"
+          id="inputPassword6"
+          class="form-control"
+          aria-describedby="passwordHelpInline"
+          formControlName="username"
+        />
+        @if(myform.controls['username'].touched &&
+        myform.controls['username'].invalid ){
+        <div class="form-text text-danger" id="emailHelp">
+          @if(myform.controls['username'].errors?.['required']){
+          <small>this field is required</small>
+          } @if(myform.controls['username'].errors?.['minlength']){
+          <small>this field must be at least 5 characters long</small>
+          }
+        </div>
+        }
+      </div>
+      <div class="col-auto">
+        <label for="inputPassword5" class="col-form-label">Password</label>
+      </div>
+      <div class="col-auto">
+        <input
+          type="password"
+          id="inputPassword5"
+          class="form-control"
+          aria-describedby="passwordHelpInline"
+          formControlName="userpass"
+        />
+        @if(myform.controls['userpass'].touched &&
+        myform.controls['userpass'].invalid ){
+        <div class="form-text text-danger" id="emailHelp">
+          @if(myform.controls['userpass'].errors?.['required']){
+          <small>this field is required</small>
+          } @if(myform.controls['userpass'].errors?.['minlength']){
+          <small>this field must be at least 5 characters long</small>
+          }
+        </div>
+        }
+      </div>
+      <div class="col-auto">
+        <label for="inputPassword4" class="col-form-label">email</label>
+      </div>
+      <div class="col-auto">
+        <input
+          type="email"
+          id="inputPassword4"
+          class="form-control"
+          aria-describedby="passwordHelpInline"
+          formControlName="useremail"
+        />
+        @if(myform.controls['useremail'].touched &&
+        myform.controls['useremail'].invalid ){
+        <div class="form-text text-danger" id="emailHelp">
+          @if(myform.controls['useremail'].errors?.['required']){
+          <small>this field is required</small>
+          } @if(myform.controls['useremail'].errors?.['minlength']){
+          <small>this field must be at least 5 characters long</small>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="col-auto mt-5">
+        <label for="exampleFormControlTextarea1" class="form-label"
+          >Why you want to join to us</label
+        >
+      </div>
+      <div class="col-auto">
+        <textarea
+          class="form-control"
+          rows="5"
+          formControlName="area"
+        ></textarea>
+        @if(myform.controls['area'].touched && myform.controls['area'].invalid
+        ){
+        <div class="form-text text-danger" id="emailHelp">
+          @if(myform.controls['area'].errors?.['required']){
+          <small>this field is required</small>
+          } @if(myform.controls['area'].errors?.['minlength']){
+          <small>this field must be at least 10 characters long</small>
+          } @if(myform.controls['area'].errors?.['maxlength']){
+          <small>max length 50</small>
+
+          }
+        </div>
+        }
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary mt-4"
+        type="submit"
+        value="submit"
+        [disabled]="myform.invalid"
+      >
+        Login
+      </button>
+    </form>
+    <!-- <div class="col-auto">
+          <span id="passwordHelpInline" class="form-text">
+            Must be 8-20 characters long.
+          </span>
+        </div> -->
+  </div>
+</div>

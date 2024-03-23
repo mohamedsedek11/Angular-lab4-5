@@ -1,0 +1,98 @@
+<div class="container p-5">
+  <h1>login (template driven form)</h1>
+  <hr />
+
+  <div class="row g-3 align-items-center p-5">
+    <form action="" #myForm="ngForm" (ngSubmit)="handleval(myForm)">
+      <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label">Name</label>
+      </div>
+      <div class="col-auto">
+        <input
+          type="text"
+          id="inputPassword6"
+          class="form-control"
+          aria-describedby="passwordHelpInline"
+          required
+          minlength="5"
+          name="username"
+          ngModel
+          #username="ngModel"
+        />
+        @if(username.touched && username.invalid){
+        <div class="form-text text-danger" id="emailHelp">
+          @if(username.errors?.['required']){
+          <small>this field is required</small>
+          } @if(username.errors?.['minlength']){
+          <small>this field must be at least 5 characters long</small>
+          }
+        </div>
+        }
+      </div>
+      <div class="col-auto">
+        <label for="inputPassword5" class="col-form-label">Password</label>
+      </div>
+      <div class="col-auto">
+        <input
+          type="password"
+          id="inputPassword5"
+          class="form-control"
+          aria-describedby="passwordHelpInline"
+          name="userpass"
+          ngModel
+          #userpass="ngModel"
+          required
+          minlength="10"
+        />
+        @if(userpass.touched && userpass.invalid){
+        <div class="form-text text-danger" id="emailHelp">
+          @if(userpass.errors?.['required']){
+          <small>this field is required</small>
+          } @if(userpass.errors?.['minlength']){
+          <small>this field must be at least 5 characters long</small>
+          }
+        </div>
+        }
+      </div>
+      <div class="col-auto">
+        <label for="inputPassword4" class="col-form-label">email</label>
+      </div>
+      <div class="col-auto">
+        <input
+          type="email"
+          id="inputPassword4"
+          class="form-control"
+          aria-describedby="passwordHelpInline"
+          name="useremail"
+          ngModel
+          #useremail="ngModel"
+          required
+          minlength="20"
+        />
+        @if(useremail.touched && useremail.invalid){
+        <div class="form-text text-danger" id="emailHelp">
+          @if(useremail.errors?.['required']){
+          <small>this field is required</small>
+          } @if(useremail.errors?.['minlength']){
+          <small>this field must be at least 5 characters long</small>
+          }
+        </div>
+        }
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary mt-4"
+        type="submit"
+        value="submit"
+        [disabled]="myForm.invalid"
+      >
+        Login
+      </button>
+    </form>
+    <!-- <div class="col-auto">
+        <span id="passwordHelpInline" class="form-text">
+          Must be 8-20 characters long.
+        </span>
+      </div> -->
+  </div>
+</div>
