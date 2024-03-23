@@ -1,0 +1,31 @@
+<h1 class="text-center">Hallo in cart</h1>
+@if(item !== '' ){
+<div class="row g-2">
+  <div class="card" style="width: 18rem">
+    <img
+      [src]="item.thumbnail"
+      style="height: 250px"
+      class="card-img-top"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ item.title }}</h5>
+      <p class="card-text">{{ item.description }}</p>
+      <h6>Price: {{ item.price }}$</h6>
+      @if ( item.stock !== 0) {
+      <span class="badge text-bg-success">In Stock</span>
+      }@else if(item.stock == 0){
+      <span class="badge text-bg-Danger">Out of Stock</span>
+      }
+    </div>
+    <div class="card-body">
+      <a href="#" class="btn btn-light border border-primary rounded-pill"
+        >Add To Cart</a
+      >
+      <button class="btn light border border-success mx-4 px-3 rounded-pill">
+        View
+      </button>
+    </div>
+  </div>
+</div>
+}

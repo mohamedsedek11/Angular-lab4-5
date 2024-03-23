@@ -1,0 +1,34 @@
+<div class="card" style="width: 18rem">
+  <img
+    [src]="product.thumbnail"
+    style="height: 250px"
+    class="card-img-top"
+    alt="..."
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ product.title }}</h5>
+    <p class="card-text">{{ product.description }}</p>
+    <h6>Price: {{ product.price }}$</h6>
+    @if ( product.stock !== 0) {
+    <span class="badge text-bg-success">In Stock</span>
+    }@else if(product.stock == 0){
+    <span class="badge text-bg-Danger">Out of Stock</span>
+    }
+  </div>
+  <div class="card-body">
+    <a
+      href="#"
+      [id]="product.id"
+      class="btn btn-light border border-primary rounded-pill"
+      (click)="addtocart(product)"
+      >Add To Cart</a
+    >
+
+    <button
+      class="btn light border border-success mx-4 px-3 rounded-pill"
+      (click)="routetosingle(product.id)"
+    >
+      View
+    </button>
+  </div>
+</div>
