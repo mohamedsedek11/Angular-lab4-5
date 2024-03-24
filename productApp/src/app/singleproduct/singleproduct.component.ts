@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../model/product';
+import { ProductsService } from '../services/cart.service';
 
 
 @Component({

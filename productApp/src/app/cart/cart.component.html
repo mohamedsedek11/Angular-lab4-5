@@ -1,31 +1,59 @@
-<h1 class="text-center">Hallo in cart</h1>
-@if(item !== '' ){
-<div class="row g-2">
-  <div class="card" style="width: 18rem">
-    <img
-      [src]="item.thumbnail"
-      style="height: 250px"
-      class="card-img-top"
-      alt="..."
-    />
-    <div class="card-body">
-      <h5 class="card-title">{{ item.title }}</h5>
-      <p class="card-text">{{ item.description }}</p>
-      <h6>Price: {{ item.price }}$</h6>
-      @if ( item.stock !== 0) {
-      <span class="badge text-bg-success">In Stock</span>
-      }@else if(item.stock == 0){
-      <span class="badge text-bg-Danger">Out of Stock</span>
-      }
-    </div>
-    <div class="card-body">
-      <a href="#" class="btn btn-light border border-primary rounded-pill"
-        >Add To Cart</a
-      >
-      <button class="btn light border border-success mx-4 px-3 rounded-pill">
-        View
-      </button>
+<!-- <h1 class="text-center">Hallo in cart</h1>
+@for(itemm of items ; track $index ){
+<h1>{{ itemm.id }}</h1>
+<p>{{ itemm.title }}</p>
+} -->
+
+<!-- <div class="row g-2">
+  <div class="col">
+    <div class="card" style="width: 18rem">
+      <div class="cart-item" *ngFor="let item of items">
+        <span>{{ item.title }}</span>
+        <span>{{ item.description }}</span>
+      </div>
     </div>
   </div>
+</div> -->
+
+<div class="row">
+  @for(item of items ; track $index){
+  <div class="col-12">
+    <div class="card mb-3 mx-auto">
+      <div class="row">
+        <div class="col-md-4" style="width: 250px; height: 300">
+          <img
+            [src]="item.thumbnail"
+            class="img-fluid rounded-start h-40"
+            alt="..."
+          />
+        </div>
+        <div class="col-md-8 d-flex align-items-center">
+          <div class="card-body">
+            <h1 class="card-title">{{ item.title }}</h1>
+            <small class="card-text">{{ item.description }}.</small>
+            <p class="card-text">
+              <span class="text-body-secondary">{{ item.price }}$</span>
+            </p>
+          </div>
+          <div class="d-flex align-items-center">
+            <button class="btn btn-danger" (click)="minus(count)">-1</button>
+            <p class="mb-0 mx-3">{{ count }}</p>
+            <button class="btn btn-success" (click)="setcount(count)">
+              +1
+            </button>
+          </div>
+
+          <button
+            class="position-absolute top-0 end-0 btn"
+            (click)="remove($index)"
+          >
+            <i class="fa-solid fa-x" style="color: red"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  }@empty {
+  <h1 class="text-center">You Don't have any item in your cart</h1>
+  }
 </div>
-}

@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ProductsService } from '../services/cart.service';
 import { EventEmitter } from 'stream';
+import { CounterService } from '../services/counter.service';
+
 
 
 @Component({
@@ -16,26 +18,29 @@ import { EventEmitter } from 'stream';
 export class ProductItemComponent {
 @Input() product! : Product ;
 
-cart! : Array<any>; 
+cart : any[] = []; 
 item : any;
+count : number = 0;
+
+
+
+constructor(private router: Router, private productService: ProductsService , private counterService: CounterService){}
 
 ngOnInit(){
-  this.productService.getarraycart().subscribe((value) => this.item = value);
+  this.counterService.getCounter().subscribe((value) => this.count = value);
+  console.log(this.count)
  }
-
-constructor(private router: Router, private productService: ProductsService){}
-
 
 routetosingle(id : any){
   // this.router.navigate(['/app-singleproduct' ,id]);
   this.router.navigate([`/app-singleproduct/${id}`]);
 }
 
-arryofitems: Array<Object> =[] ;
-
-addtocart(obj : any){
-  this.productService.setarraycart(obj)
-  console.log(this.item)
+addToCart(product: Product) {
+  this.productService.addToCart(product);
+  window.alert('Your product has been added to the cart!');
+  this.count = this.count + 1;
+  this.counterService.setCounter(this.count);
 }
 
 }

@@ -17,9 +17,9 @@
       id="navbarNavAltMarkup"
     >
       <div class="navbar-nav">
-        <a class="nav-link" aria-current="page" routerLink="app-counter"
-          >Counter : {{ counter }}</a
-        >
+        <!-- <a class="nav-link" aria-current="page" routerLink="app-counter"
+          >Counter : {{ counter }}</a -->
+
         <a class="nav-link" aria-current="page" routerLink="app-register"
           >Register</a
         >
@@ -29,7 +29,8 @@
             class="fa-solid fa-cart-shopping"
             style="color: black; font-weight: bolder"
           ></i
-        ></a>
+          ><span class="fw-bolder text-warning">{{ counter }}</span></a
+        >
       </div>
     </div>
   </div>
